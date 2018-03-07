@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+<title>java</title>
+<link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+<div class="n-support">请使用Chrome、Safari等webkit内核的浏览器！</div>
+<div class="n-head">
+    <div class="g-doc f-cb">
+        <div class="user">
+            <span class="name" id="name"></span><a href="login.html" id="logout" onclick="logout();">[退出]</a>
+            <span id="qing">请</span><a href="login.html" id="login">[登录]</a>
+        </div>
+        <ul class="nav">
+            <li id="index"><a href="index.html">首页</a></li>
+            <li id="account"><a href="account.html">账务</a></li>
+            <li id="public"><a href="public.html">发布</a></li>
+            <li id="car"><a href="car.html">购物车</a></li>
+        </ul>
+    </div>
+</div>
+<div class="g-doc">
+    <div class="m-tab m-tab-fw m-tab-simple f-cb">
+        <h2>已购买的内容</h2>
+    </div>
+    <table class="m-table m-table-row n-table g-b3">
+        <colgroup><col class="img"/><col/><col class="time"/><col/><col class="num"/><col/><col class="price"/><col/></colgroup>
+        <thead>
+            <tr><th>内容图片</th><th>内容名称</th><th>购买时间</th><th>购买数量</th><th>购买价格</th></tr>
+        </thead>
+        <tbody id="recordTable">
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="4"><div class="total">总计：</div></td>
+                <td><span class="v-unit">¥</span><span class="v-value" id="sum"></span></td>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+<div class="n-foot">
+    <p>版权所有：jd_zengchen@163.com</p>
+</div>
+<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/javascript" src="js/global.js"></script>
+<script type="text/javascript" src="js/account.js"></script>
+</body>
+</html>

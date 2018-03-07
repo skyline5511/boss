@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.netease.boss.mapper.ContentMapper" >
+  <resultMap id="BaseResultMap" type="com.netease.boss.domain.Content" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="title" property="title" jdbcType="VARCHAR" />
+    <result column="summary" property="summary" jdbcType="VARCHAR" />
+    <result column="detail" property="detail" jdbcType="LONGVARCHAR" />
+    <result column="pic" property="pic" jdbcType="LONGVARCHAR" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="is_buy" property="isBuy" jdbcType="INTEGER" />
+    <result column="is_sell" property="isSell" jdbcType="INTEGER" />
+    <result column="selled_num" property="selledNum" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, title, summary, detail, pic, price, is_buy, is_sell, selled_num
+  </sql>
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_content
+  </select>
+
+  <update id="updateIsBuy" parameterType="java.lang.Integer">
+    update t_content
+    <set>
+      selled_num = selled_num + #{num,jdbcType=INTEGER}
+      is_buy = 1,
+      is_sell = 1,
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select
+    <include refid="Base_Column_List" />
+    from t_content
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from t_content
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.netease.boss.domain.Content" >
+    insert into t_content (id, title, summary,
+      detail, pic, price,
+      is_buy, is_sell, selled_num)
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR},
+      #{detail,jdbcType=LONGVARCHAR}, #{pic,jdbcType=LONGVARCHAR}, #{price,jdbcType=DOUBLE},
+      #{isBuy,jdbcType=INTEGER}, #{isSell,jdbcType=INTEGER}, #{selledNum,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.netease.boss.domain.Content" >
+    insert into t_content
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="title != null" >
+        title,
+      </if>
+      <if test="summary != null" >
+        summary,
+      </if>
+      <if test="detail != null" >
+        detail,
+      </if>
+      <if test="pic != null" >
+        pic,
+      </if>
+      <if test="price != null" >
+        price,
+      </if>
+      <if test="isBuy != null" >
+        is_buy,
+      </if>
+      <if test="isSell != null" >
+        is_sell,
+      </if>
+      <if test="selledNum != null" >
+        selled_num,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null" >
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pic != null" >
+        #{pic,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="price != null" >
+        #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="isBuy != null" >
+        #{isBuy,jdbcType=INTEGER},
+      </if>
+      <if test="isSell != null" >
+        #{isSell,jdbcType=INTEGER},
+      </if>
+      <if test="selledNum != null" >
+        #{selledNum,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.netease.boss.domain.Content" >
+    update t_content
+    <set >
+      <if test="title != null" >
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null" >
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="detail != null" >
+        detail = #{detail,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pic != null" >
+        pic = #{pic,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="price != null" >
+        price = #{price,jdbcType=DOUBLE},
+      </if>
+      <if test="isBuy != null" >
+        is_buy = #{isBuy,jdbcType=INTEGER},
+      </if>
+      <if test="isSell != null" >
+        is_sell = #{isSell,jdbcType=INTEGER},
+      </if>
+      <if test="selledNum != null" >
+        selled_num = #{selledNum,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.netease.boss.domain.Content" >
+    update t_content
+    set title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      detail = #{detail,jdbcType=LONGVARCHAR},
+      pic = #{pic,jdbcType=LONGVARCHAR},
+      price = #{price,jdbcType=DOUBLE},
+      is_buy = #{isBuy,jdbcType=INTEGER},
+      is_sell = #{isSell,jdbcType=INTEGER},
+      selled_num = #{selledNum,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
