@@ -9,11 +9,11 @@ public class Content {
 
     private Double price;
 
-    private Integer isBuy;
+    private Integer isBuy = 0;
 
-    private Integer isSell;
+    private Integer isSell = 0;
 
-    private Integer selledNum;
+    private Integer selledNum = 0;
 
     private String detail;
 

@@ -25,7 +25,7 @@
   <update id="updateIsBuy" parameterType="java.lang.Integer">
     update t_content
     <set>
-      selled_num = selled_num + #{num,jdbcType=INTEGER}
+      selled_num = selled_num + #{num,jdbcType=INTEGER},
       is_buy = 1,
       is_sell = 1,
     </set>
